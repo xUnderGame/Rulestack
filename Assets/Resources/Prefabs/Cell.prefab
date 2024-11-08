@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4105fbcc3bb36534abb94c3d177e000e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   marker: 0
 --- !u!1 &8881493746757466164
 GameObject:
@@ -173,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322714221806804197}
   - component: {fileID: 5921066171698974054}
-  - component: {fileID: 1472431483334035262}
+  - component: {fileID: 7624574875178098823}
   m_Layer: 0
   m_Name: Marker
   m_TagString: Untagged
@@ -208,7 +209,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8881493746757466164}
   m_CullTransparentMesh: 1
---- !u!114 &1472431483334035262
+--- !u!114 &7624574875178098823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

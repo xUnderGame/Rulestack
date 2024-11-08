@@ -5,7 +5,7 @@ public class ViewManager : MonoBehaviour
 {
     [HideInInspector] public static ViewManager Instance;
 
-    void Awake()
+    void Start()
     {
         // Persistence
         if (Instance) { Destroy(gameObject); return; }

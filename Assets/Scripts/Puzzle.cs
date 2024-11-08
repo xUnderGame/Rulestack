@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using static Serializables;
+using static Cell;
 
 public class Puzzle : MonoBehaviour
 {
@@ -23,7 +24,9 @@ public class Puzzle : MonoBehaviour
             level.cells.Add(new());
             foreach (Transform cell in row.transform)
             {
-                level.cells[rowCount].Add(cell.GetComponent<Cell>());
+                Cell comp = cell.GetComponent<Cell>();
+                level.cells[rowCount].Add(comp);
+                comp.puzzle = this;
             }
             rowCount++;
         }
@@ -32,14 +35,31 @@ public class Puzzle : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isActive) return;
-        CheckCompletion();
+        ParseLevel();
     }
 
     // Checks if a level is completed, then disables itself.
-    public bool CheckCompletion()
+    public bool ParseLevel()
     {
+        bool winCondition = true;
+        for (int row = 0; row < level.cells.Count; row++)
+        {
+            for (int i = 0; i < level.cells[row].Count; i++)
+            {
+                Cell cell = level.cells[row][i];
+                switch (cell.marker)
+                {
+                    case MarkerTypes.Square:
+                        if (!cell.isActive) winCondition = false;
+                        break;
+                    case MarkerTypes.None:
+                    default:
+                        break;
+                }
+            }
+        }
         // complicated condition here
-        // isActive = false;
-        return true;
+        if (winCondition) isActive = false;
+        return winCondition;
     }
 }
